@@ -1,7 +1,7 @@
 /**
  * @fileOverview 本地缓存类 (带本地持久存储)
  * @author <a href="http://qww.elins.cn">邱文武</a>
- * @version 1.0
+ * @version 1.2
  */
 require('mm_expand');
 const {
