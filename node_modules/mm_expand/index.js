@@ -1,7 +1,7 @@
 /**
  * @fileOverview JavaScript拓展函数
  * @author <a href="http://qww.elins.cn">邱文武</a>
- * @version 1.2.1
+ * @version 1.2
  */
 const {
 	j2xParser,
@@ -311,6 +311,42 @@ function push(objA, objB, bl) {
 }
 
 /**
+ * @description 清空对象值
+ * @param {Object} obj 对象
+ * @return {Object} 返回对象自身
+ */
+function clear(obj) {
+	if (obj) {
+		for (var k in obj) {
+			var val = obj[k];
+			if (val) {
+				var name = typeof val === 'undefined' ? 'undefined' : typeof(val);
+				switch (name) {
+					case "string":
+						obj[k] = "";
+						break;
+					case "number":
+						obj[k] = 0;
+						break;
+					case "array":
+						obj[k].clear();
+						break;
+					case "object":
+						clear(obj[k]);
+						break;
+					case "function":
+						break;
+					case "symbol":
+						obj[k] = "";
+						break;
+				}
+			}
+		}
+	}
+	return obj;
+}
+
+/**
  * @description 转为json字符串
  * @param {Object} obj 被转换的对象
  * @param {Boolean} format 是否格式化
@@ -452,6 +488,7 @@ function keys(obj, file) {
  * @property {Function()} speed 测试执行速度函数
  * @property {Function(Object, Object, Boolean):Boolean} as 判断对象是否相似
  * @property {Function(Object, Object):Boolean} push 为对象添加属性
+ * @property {Function(Object):Object} clear 清空数组对象
  * @property {Function(Object):String} toJson 对象转json字符串
  * @property {Function(Object):String} toXml 对象转xml字符串
  * @property {Function(Object):String} toUrl 对象转url字符串
@@ -506,6 +543,8 @@ if (typeof($) === "undefined") {
 		as: as,
 		// 添加对象
 		push: push,
+		// 清空数组对象
+		clear: clear,
 		// 对象转json字符串
 		toJson: toJson,
 		// 对象转xml字符串

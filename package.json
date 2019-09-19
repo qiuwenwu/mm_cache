@@ -1,6 +1,6 @@
 {
   "name": "mm_cache",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "这是超级美眉cache帮助函数模块，一个简单的内存+硬盘缓存",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/qiuwenwu/mm_cache.git"
   },
   "keywords": [
-    "mycache",
+    "cache",
     "async",
     "await",
     "promise",
@@ -30,6 +30,6 @@
   },
   "homepage": "https://github.com/qiuwenwu/mm_cache#readme",
   "dependencies": {
-    "mm_expand": "^1.2.5"
+    "mm_expand": "^1.2.6"
   }
 }
